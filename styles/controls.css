@@ -1,0 +1,21 @@
+.controls {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  top: 20px;
+  right: 20px;
+  padding: 5px;
+}
+
+.controls div {
+  margin-bottom: 5px;
+}
+
+.controls #generate {
+  padding: 3px;
+  text-decoration: none;
+  display: inline-block;
+}
+/*# sourceMappingURL=controls.css.map */
