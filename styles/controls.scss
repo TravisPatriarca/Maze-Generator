@@ -1,20 +1,78 @@
-.controls {
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+$buttonCol: #f0f0f0;
+
+#controls {
     position: absolute;
-    width: 200px;
-    height: 200px;
-    background-color: #f0f0f0;
-    border-radius: 5px;
+    width: 375px;
     top: 20px;
     right: 20px;
-    padding: 5px;
+    background-color: #141414ea;
+    .control-block {
+        display: flex;
+        flex-direction: column;
+        color: white;
+        text-shadow: 0px 0px 2px black;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-top: 1px solid grey;
 
-    div {
-        margin-bottom: 5px;
-    }
+        transition: opacity 0.1s ease-in-out;
+        div {
+            margin: 4px 0px;
+        }
 
-    #generate {
-        padding: 3px;
-        text-decoration: none;
-        display: inline-block;
+        .control-button {
+            text-decoration: none;
+            border-radius: 2px;
+            padding: 5px 10px;
+            width: 100%;
+            margin: 10px auto;
+            background: none;
+            border: 1px solid $buttonCol;
+            color: $buttonCol;
+            font-size:14px;
+            &:hover {
+                background: $buttonCol;
+                color: black;
+                cursor: pointer;
+            }
+            &:active {
+                width: 99%;
+                font-size: 13px;
+                margin-bottom: 11px;
+            }
+
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+        }
+
+        .control-input {
+            label {
+                font-family: 'Open Sans';
+                font-size: 18px;
+            }
+
+            input, select {
+                float: right;
+            }
+        }
+
+        p {
+            font-family: 'Open Sans';
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .start-icon, .finish-icon {
+            
+            width: 60px;
+            background-color: none;
+            filter: invert(1);
+        }
+
+        .highlight-icon {
+
+            background-color: yellow;
+                
+        }
     }
 }

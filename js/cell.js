@@ -1,15 +1,16 @@
 class Cell {
     constructor(x, y, cellSize) {
-        this.walls = [true, true, true, true];
-        this.filled = false
+        this.wall = false;
         this.visited = false;
         this.cellSize = cellSize;
         this.x = x;
         this.y = y;
         this.xpos = x*cellSize;
         this.ypos = y*cellSize;
-        this.colour = undefined;
+        this.colour = 0;
+        this.colour2 = undefined;
         this.scale = 0
+        this.finished = false;
     }
 
     getWallMeeting(otherCell) {
@@ -28,32 +29,35 @@ class Cell {
         }
     }
 
-    draw(outline=false) {
+    draw() {
         const x = this.x;
         const y = this.y;
         const cellSize = this.cellSize;
-        if (this.filled) {
-            fill(color(this.colour));
+        if (this.visited) {
+            //fill(!this.finished ? color(this.colour) : (this.wall ? 20: 200));
+            //if (this.colour2 != undefined) {
+            //    fill(color(this.colour2));
+            //}
+            fill(color(this.color));
             noStroke();
-            noSmooth();
-            rect(this.xpos/* + cellSize/2* (1-this.scale)*/, this.ypos/* + cellSize/2* (1-this.scale)*/, cellSize/* * this.scale*/, cellSize /** this.scale*/);
-            //this.scale = lerp(this.scale, 1, 0.2);
-            
-            if (outline && cellSize > 2) {
-                stroke(30);
-                if (this.walls[0]) { //top
-                    line(x * cellSize, y * cellSize, x * cellSize + cellSize, y * cellSize);
-                }
-                if (this.walls[1]) { //right
-                    line(x * cellSize + cellSize, y * cellSize, x * cellSize + cellSize, y * cellSize + cellSize);
-                }
-                if (this.walls[2]) { //bottom
-                    line(x * cellSize, y * cellSize + cellSize, x * cellSize + cellSize, y * cellSize + cellSize);
-                }
-                if (this.walls[3]) { //left
-                    line(x * cellSize, y * cellSize, x * cellSize, y * cellSize + cellSize);
-                }
-            }
+            //noSmooth();
+            //rect(this.xpos + cellSize/2, this.ypos + cellSize/2, cellSize, cellSize);
+            rect(this.xpos + cellSize/2* (1-this.scale), this.ypos + cellSize/2* (1-this.scale), cellSize * this.scale, cellSize * this.scale);
+            this.scale = lerp(this.scale, 1, 0.2);   
         }
+
+        // if (this.wall) {
+        //     fill(0);
+        //     //fill(!this.finished ? color(this.colour) : 255);
+        //     noStroke();
+        //     noSmooth();
+        //     //rect(this.xpos + cellSize/2, this.ypos + cellSize/2, cellSize, cellSize);
+        //     rect(this.xpos + cellSize/2* (1-this.scale), this.ypos + cellSize/2* (1-this.scale), cellSize * this.scale, cellSize * this.scale);
+        //     this.scale = lerp(this.scale, 1, 0.2);
+        // }
+
+        // fill(125);
+        // textAlign(CENTER, CENTER);
+        // text(this.visited, this.xpos + this.cellSize/2, this.ypos + this.cellSize/2);
     }
 }
